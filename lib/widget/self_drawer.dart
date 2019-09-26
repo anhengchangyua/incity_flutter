@@ -9,36 +9,36 @@ class SelfDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: MediaQuery.removePadding(
-
         context: context,
         //移除抽屉菜单顶部默认留白
         removeTop: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 48.0),
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: ClipOval(
-                      child: Image.asset(
-                        "imgs/avatar.png",
-                        width: 80,
-                      ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('images/drawer_bg.jpeg'),
+                          fit: BoxFit.fill,
+                          alignment: Alignment.center)),
+                  alignment: Alignment.center,
+                ),
+                Center(
+                  child: Container(
+                    child: Text(
+                      '个人中心',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.only(top: 48.0),
                   ),
-                  Text(
-                    "个人中心",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
             Expanded(
-                child: Padding(
-              padding: EdgeInsets.only(top: 48.0),
               child: ListView(
                 children: <Widget>[
                   ListTile(
@@ -55,7 +55,7 @@ class SelfDrawer extends StatelessWidget {
                   ),
                 ],
               ),
-            )),
+            ),
           ],
         ),
       ),

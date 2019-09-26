@@ -26,20 +26,6 @@ class _TabNavigatorState extends State<TabNavigator>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle:true,
-
-        title: const Text('在东港'),
-        backgroundColor: Color.fromARGB(255,103,116,255),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                print('Icon Press');
-              })
-        ],
-      ),
-      drawer: new SelfDrawer(), //抽屉
       body: PageView(
         controller: _controller,
         children: <Widget>[HomeTabPage(), SearchPage(), TravelPage(), MyPage()],
