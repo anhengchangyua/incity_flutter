@@ -16,3 +16,26 @@ class BannerList {
     return data;
   }
 }
+
+final List<BannerList> datas = [
+  BannerList(
+    icon: 'Candy Shop',
+    url: 'https://resources.ninghao.org/images/candy-shop.jpg',
+  ),
+  BannerList(
+    icon: 'Childhood in a picture',
+    url: 'https://resources.ninghao.org/images/childhood-in-a-picture.jpg',
+  ),
+  BannerList(
+    icon: 'Contained',
+    url: 'https://resources.ninghao.org/images/contained.jpg',
+  ),
+  BannerList(
+    icon: 'Dragon',
+    url: 'https://resources.ninghao.org/images/dragon.jpg',
+  ),
+  BannerList(
+    icon: 'White Dragon',
+    url: 'https://resources.ninghao.org/images/white-dragon.jpg',
+  )
+];

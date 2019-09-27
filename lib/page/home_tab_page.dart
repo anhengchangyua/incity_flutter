@@ -22,7 +22,7 @@ class _HomeTabPageState extends State<HomeTabPage>
     _tabController = TabController(length: tabs.length, vsync: this);
     _scrollController = ScrollController();
     _scrollController.addListener(() {
-       print('123123');
+      print('123123');
     });
   }
 
@@ -77,11 +77,7 @@ class _HomeTabPageState extends State<HomeTabPage>
                         child: TabBarView(
                             controller: _tabController,
                             children: tabs.map((e) {
-                              return   Text(e);
-//                                Container(
-//                                alignment: Alignment.center,
-//                                child: HomeTabList(),
-//                              );
+                              return HomeTabList();
                             }).toList()),
                       ),
                     ))),
