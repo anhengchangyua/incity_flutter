@@ -7,7 +7,8 @@ class SelfDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return SafeArea(
+        child: Drawer(
       child: MediaQuery.removePadding(
         context: context,
         //移除抽屉菜单顶部默认留白
@@ -59,6 +60,6 @@ class SelfDrawer extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

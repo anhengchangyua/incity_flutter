@@ -6,7 +6,7 @@ Widget HomeListItem() {
   return SliverList(
     delegate: SliverChildBuilderDelegate((context, index) {
       return ListItem();
-    }, childCount: 21),
+    }, childCount: 11),
   );
 }
 
@@ -39,11 +39,11 @@ class _ListItemState extends State<ListItem>
           // 内容视图
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-            child: _listItem(),
+            child: _covertListItem(0),
           ),
           // 分割线
           Container(
-            margin: EdgeInsets.fromLTRB(20.0, 2.0, 20.0, 2.0),
+            margin: EdgeInsets.fromLTRB(20.0, 2.0, 10.0, 2.0),
             color: Color(0xffeaeaea),
             constraints: BoxConstraints.expand(height: 2.0),
           )
@@ -59,8 +59,18 @@ class _ListItemState extends State<ListItem>
   }
 }
 
-class _listItem extends StatelessWidget {
-  const _listItem({
+Widget _covertListItem(int type) {
+  switch (type) {
+    case -1:
+      return _listItem1();
+    case 2:
+      return _listItem1();
+  }
+  return _listItem1();
+}
+
+class _listItem1 extends StatelessWidget {
+  const _listItem1({
     Key key,
   }) : super(key: key);
 
@@ -72,14 +82,15 @@ class _listItem extends StatelessWidget {
         Expanded(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//          mainAxisSize: MainAxisSize.max,
-//          crossAxisAlignment: CrossAxisAlignment.center,
-//          verticalDirection: VerticalDirection.down,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          verticalDirection: VerticalDirection.down,
           // textDirection:,
-//          textBaseline: TextBaseline.alphabetic,
+          textBaseline: TextBaseline.alphabetic,
           children: <Widget>[
             Container(
               height: 60,
+              padding: EdgeInsets.only(top: 5),
               margin: EdgeInsets.only(left: 10),
               child: Text(
                 '继山东编导艺考联考被曝疑似出现泄题和作弊的情况。江西编导艺考联考也被曝疑似出现泄题和作弊的情况。',
@@ -104,7 +115,7 @@ class _listItem extends StatelessWidget {
                     width: 40.0,
                     height: 20.0,
                     child: ButtonTheme(
-                      buttonColor: Color(0xff1C64CF),
+                      buttonColor: Color.fromARGB(255, 103, 114, 202),
                       shape: StadiumBorder(),
                       child: RaisedButton(
                         onPressed: () => print('test'),
@@ -135,7 +146,8 @@ class _listItem extends StatelessWidget {
             color: Colors.green,
             borderRadius: BorderRadius.circular(5.0),
             image: DecorationImage(
-              image: new NetworkImage('https://resources.ninghao.org/images/candy-shop.jpg'),
+              image: new NetworkImage(
+                  'https://resources.ninghao.org/images/candy-shop.jpg'),
               fit: BoxFit.cover,
             ),
           ),

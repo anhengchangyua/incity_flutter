@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/page/my_page.dart';
 import 'package:flutter_app/page/travel_page.dart';
 import 'package:flutter_app/page/home_tab_page.dart';
-import 'package:flutter_app/page/search_page.dart';
+import 'package:flutter_app/page/service_page.dart';
 import 'package:flutter_app/widget/self_drawer.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -28,7 +28,7 @@ class _TabNavigatorState extends State<TabNavigator>
     return Scaffold(
       body: PageView(
         controller: _controller,
-        children: <Widget>[HomeTabPage(), SearchPage(), TravelPage(), MyPage()],
+        children: <Widget>[HomeTabPage(), ServicePage(), TravelPage(), MyPage()],
         physics: NeverScrollableScrollPhysics(), //取消滑动
       ),
       bottomNavigationBar: BottomNavigationBar(
