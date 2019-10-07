@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ServicePage extends StatefulWidget {
   @override
@@ -31,33 +32,16 @@ class _ServicePageState extends State<ServicePage>
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _list = new List();
+    _list.add(new _ServiceHeader(animation: animation));
+
     return Scaffold(
-      appBar: PreferredSize(
-          child: AppBar(
-            backgroundColor: Color.fromARGB(255, 103, 116, 255),
-            // 如果没有设置这项， 二级页面 会默认是返回箭头  ， 有侧边栏的页面默认有图标（用来打开侧边栏）
-            automaticallyImplyLeading: true,
-            // 如果有 leading  这个不会管用 ； 如果没有leading ，当有侧边栏的时候， false：不会显示默认的图片，true 会显示 默认图片，并响应打开侧边栏的事件
-            title: Text("云服务"),
-            centerTitle: true,
-          ),
-          preferredSize: Size.fromHeight(40)),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.only(top: 0),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          shrinkWrap: false,
-          slivers: <Widget>[
-            SliverAppBar(
-              backgroundColor: Colors.transparent,
-              flexibleSpace: _ServiceHeader(animation: animation),
-              expandedHeight: 160.0,
-            ),
-          ],
-        ),
-      )),
+          child: Scrollbar(
+              child: new ListView(
+        children: _list,
+      ))),
     );
   }
 
@@ -71,7 +55,7 @@ class _ServicePageState extends State<ServicePage>
 
 class _ServiceHeader extends AnimatedWidget {
   static final _opacityTween = new Tween<double>(begin: 0.8, end: 1.0);
-  static final _sizeTween = new Tween<double>(begin: 330.0, end: 400.0);
+  static final _sizeTween = new Tween<double>(begin: 340.0, end: 400.0);
 
   _ServiceHeader({Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
@@ -84,7 +68,7 @@ class _ServiceHeader extends AnimatedWidget {
           child: new Opacity(
             opacity: _opacityTween.evaluate(animation),
             child: new Container(
-              height: _sizeTween.evaluate(animation),
+              height: 180,
               width: _sizeTween.evaluate(animation),
               child: CachedNetworkImage(
                 imageUrl:
