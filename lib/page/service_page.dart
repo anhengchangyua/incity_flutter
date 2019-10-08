@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_app/widget/custom_grid_view.dart';
 
 class ServicePage extends StatefulWidget {
   @override
@@ -14,7 +14,6 @@ class _ServicePageState extends State<ServicePage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = new AnimationController(
         duration: const Duration(milliseconds: 1500), vsync: this);
@@ -34,9 +33,15 @@ class _ServicePageState extends State<ServicePage>
   Widget build(BuildContext context) {
     List<Widget> _list = new List();
     _list.add(new _ServiceHeader(animation: animation));
+    _list.add(CustomGridView());
+    _list.add(Container(
+        child: new Image.network(
+      'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190705/25_20190705023025_885_8862.jpg',
+      fit: BoxFit.cover,
+    )));
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: Scrollbar(
               child: new ListView(
@@ -47,7 +52,6 @@ class _ServicePageState extends State<ServicePage>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controller.dispose();
     super.dispose();
   }
@@ -68,7 +72,7 @@ class _ServiceHeader extends AnimatedWidget {
           child: new Opacity(
             opacity: _opacityTween.evaluate(animation),
             child: new Container(
-              height: 180,
+              height: 165,
               width: _sizeTween.evaluate(animation),
               child: CachedNetworkImage(
                 imageUrl:
