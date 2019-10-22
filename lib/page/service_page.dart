@@ -35,10 +35,37 @@ class _ServicePageState extends State<ServicePage>
     _list.add(new _ServiceHeader(animation: animation));
     _list.add(CustomGridView());
     _list.add(Container(
-        child: new Image.network(
-      'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190705/25_20190705023025_885_8862.jpg',
-      fit: BoxFit.cover,
-    )));
+        margin: EdgeInsets.fromLTRB(6, 0, 6, 0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(4),
+            topRight: Radius.circular(4),
+            bottomLeft: Radius.circular(4),
+            bottomRight: Radius.circular(4),
+          ),
+          child: new Image.network(
+            'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190705/25_20190705023025_885_8862.jpg',
+            fit: BoxFit.cover,
+          ),
+        )));
+    _list.add(Container(
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.assistant_photo,
+            color: Colors.deepOrange,
+          ),
+          Padding(padding: EdgeInsets.only(left: 5)),
+          Text(
+            '政务',
+            style: TextStyle(color: Colors.black, fontSize: 16),
+          )
+        ],
+      ),
+      width: 90,
+      height: 40,
+      padding: EdgeInsets.only(left: 24.0, right: 8.0),
+    ));
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -74,15 +101,21 @@ class _ServiceHeader extends AnimatedWidget {
             child: new Container(
               height: 165,
               width: _sizeTween.evaluate(animation),
-              child: CachedNetworkImage(
-                imageUrl:
-                    'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190710/25_20190710111744_473_7193.jpg',
-                fit: BoxFit.cover,
-                placeholder: (context, url) {
-                  return DecoratedBox(
-                    decoration: BoxDecoration(color: Colors.grey[300]),
-                  );
-                },
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
+                ),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190710/25_20190710111744_473_7193.jpg',
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) {
+                    return DecoratedBox(
+                      decoration: BoxDecoration(color: Colors.grey[300]),
+                    );
+                  },
+                ),
               ),
             ),
           ),
