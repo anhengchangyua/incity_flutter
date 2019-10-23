@@ -42,9 +42,15 @@ class SubNav extends StatelessWidget {
           ),
         ),
 //        lastBottom(subNavList),
-        Row(
-            children:
-                items.sublist(subNavList.length - seprate, subNavList.length)),
+        Row(children: items.sublist(seprate, seprate * 2)),
+
+        sepratescale == 4
+            ? Row(children: items.sublist(seprate * 2  , seprate * 2 + 3))
+            : SizedBox(
+                child: Container(
+                  height: 5.0,
+                ),
+              ),
       ],
     );
   }
