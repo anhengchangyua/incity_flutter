@@ -5,19 +5,20 @@ import 'package:flutter_app/widget/web_view.dart';
 
 class SubNav extends StatelessWidget {
   final List<SubNavList> subNavList;
+  final Color color;
+  final double sepratescale;
 
-  const SubNav({Key key, this.subNavList}) : super(key: key);
+  const SubNav({Key key, this.subNavList, this.color, this.sepratescale})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //container 方便定义宽高
     return Container(
-      height: 94,
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(6))),
+          color: color, borderRadius: BorderRadius.all(Radius.circular(6))),
       child: Padding(
-        padding: EdgeInsets.all(7),
+        padding: EdgeInsets.all(4),
         child: _items(context),
       ),
     );
@@ -29,19 +30,21 @@ class SubNav extends StatelessWidget {
     subNavList.forEach((model) {
       items.add(_item(context, model));
     });
-    int seprate = (subNavList.length / 2 + 0.5).toInt();
+    int seprate = (subNavList.length / sepratescale + 0.5).toInt();
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
+        Row(children: items.sublist(0, seprate)),
+        SizedBox(
+          child: Container(
+            height: 10.0,
+          ),
+        ),
+//        lastBottom(subNavList),
         Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: items.sublist(0, seprate)),
-        Padding(
-          padding: EdgeInsets.only(top: 10),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: items.sublist(seprate, subNavList.length)),
-        )
+            children:
+                items.sublist(subNavList.length - seprate, subNavList.length)),
       ],
     );
   }
@@ -60,18 +63,20 @@ class SubNav extends StatelessWidget {
                         hideAppBar: model.hideAppBar,
                       )));
         },
-        child: Column(
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.network(
               model.icon,
-              width: 18,
-              height: 18,
+              width: 20,
+              height: 20,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 3),
+              padding: EdgeInsets.only(left: 6),
               child: Text(
                 model.title,
-                style: TextStyle(fontSize: 10),
+                style: TextStyle(fontSize: 13, color: Colors.black54),
               ),
             )
           ],
@@ -81,3 +86,11 @@ class SubNav extends StatelessWidget {
     );
   }
 }
+
+//Widget lastBottom(List<SubNavList> i) {
+//  i.forEach((f) {
+//   return Row(
+//       children:
+//       items.sublist(subNavList.length - seprate, subNavList.length)),
+//  });
+//}

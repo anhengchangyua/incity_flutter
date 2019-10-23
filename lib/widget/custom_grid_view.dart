@@ -18,6 +18,7 @@ Widget CustomGridView({List data = const [1, 2, 3, 4, 5]}) {
     );
   }
   return SingleChildScrollView(
+
     padding: new EdgeInsets.all(4),
     scrollDirection: Axis.horizontal,
     physics: BouncingScrollPhysics(),

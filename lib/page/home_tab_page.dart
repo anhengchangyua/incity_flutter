@@ -66,19 +66,22 @@ class _HomeTabPageState extends State<HomeTabPage>
                           ),
                         ];
                       },
-                      body: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
+                      body: Padding(
+                        padding: EdgeInsets.only(top: 3),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                            ),
                           ),
+                          child: TabBarView(
+                              controller: _tabController,
+                              children: tabs.map((e) {
+                                return HomeTabList();
+                              }).toList()),
                         ),
-                        child: TabBarView(
-                            controller: _tabController,
-                            children: tabs.map((e) {
-                              return HomeTabList();
-                            }).toList()),
                       ),
                     ))),
               ],

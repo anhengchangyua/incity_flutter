@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/model/sub_nav_model.dart';
 import 'package:flutter_app/widget/custom_grid_view.dart';
+import 'package:flutter_app/widget/grid_nav.dart';
+import 'package:flutter_app/widget/sub_nav.dart';
 
 class ServicePage extends StatefulWidget {
   @override
@@ -66,14 +69,34 @@ class _ServicePageState extends State<ServicePage>
       height: 40,
       padding: EdgeInsets.only(left: 24.0, right: 8.0),
     ));
+    _list.add(
+        new SubNav(subNavList: datas, color: Colors.white, sepratescale: 2));
+    _list.add(Container(
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.assistant_photo,
+            color: Colors.deepOrange,
+          ),
+          Text(
+            '民生',
+            style: TextStyle(color: Colors.black, fontSize: 16),
+          )
+        ],
+      ),
+      width: 90,
+      height: 40,
+      padding: EdgeInsets.only(left: 24.0, right: 8.0),
+    ));
+    _list.add(new SubNav(
+        subNavList: dataPerson, color: Colors.white, sepratescale: 4));
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-          child: Scrollbar(
-              child: new ListView(
+          child:   ListView(
         children: _list,
-      ))),
+      )),
     );
   }
 
