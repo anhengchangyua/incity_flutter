@@ -95,9 +95,9 @@ class _listItem1 extends StatelessWidget {
               child: Text(
                 '继山东编导艺考联考被曝疑似出现泄题和作弊的情况。江西编导艺考联考也被曝疑似出现泄题和作弊的情况。',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Color(0xff111111),
-                ),
+                    fontSize: 15.5,
+                    color: Color(0xff111111),
+                    fontFamily: 'FZBIAOYSJW'),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),

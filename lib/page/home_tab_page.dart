@@ -155,7 +155,10 @@ class _HomeTabPageState extends State<HomeTabPage>
                 //hero的child中若有material系widget（如TextField），则父需要为Material系layout（如Scaffold、Material），否则在页面跳转期间会看到报错UI，提示祖先不是material
                 child: Text(
                   '在东港',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "FZBIAOYSJW",
+                      fontSize: 18),
                 )),
           ),
           GestureDetector(
@@ -186,7 +189,7 @@ class _HomeTabPageState extends State<HomeTabPage>
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 6),
           child: Text(
             title,
-            style: TextStyle(fontSize: 15),
+            style: TextStyle(fontSize: 16, fontFamily: 'FZBIAOYSJW'),
           ),
         );
       }).toList(),
