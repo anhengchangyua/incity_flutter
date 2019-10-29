@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/widget/custom_sliver_app_bar_delegate.dart';
 import 'package:flutter_app/widget/home_tab_list.dart';
 import 'package:flutter_app/widget/self_drawer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class HomeTabPage extends StatefulWidget {
   @override
@@ -28,6 +30,7 @@ class _HomeTabPageState extends State<HomeTabPage>
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -66,22 +69,19 @@ class _HomeTabPageState extends State<HomeTabPage>
                           ),
                         ];
                       },
-                      body: Padding(
-                        padding: EdgeInsets.only(top: 3),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
+                      body: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
                           ),
-                          child: TabBarView(
-                              controller: _tabController,
-                              children: tabs.map((e) {
-                                return HomeTabList();
-                              }).toList()),
                         ),
+                        child: TabBarView(
+                            controller: _tabController,
+                            children: tabs.map((e) {
+                              return HomeTabList();
+                            }).toList()),
                       ),
                     ))),
               ],
@@ -115,16 +115,17 @@ class _HomeTabPageState extends State<HomeTabPage>
     return BoxDecoration(
         gradient: LinearGradient(
       colors: [
+        Color.fromARGB(255, 103, 114, 222),
         Color.fromARGB(255, 103, 116, 255),
-        Color.fromARGB(255, 103, 114, 202),
       ],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+      begin: Alignment.bottomLeft,
+      end: Alignment.topRight,
     ));
   }
 
   ///头部标题栏
   Widget appBarHeader() {
+
     return Container(
       height: 60,
       alignment: Alignment.centerLeft,
@@ -158,7 +159,7 @@ class _HomeTabPageState extends State<HomeTabPage>
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "FZBIAOYSJW",
-                      fontSize: 18),
+                      fontSize: ScreenUtil(allowFontScaling: true).setSp(38),),
                 )),
           ),
           GestureDetector(

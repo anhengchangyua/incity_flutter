@@ -4,6 +4,7 @@ import 'package:flutter_app/page/travel_page.dart';
 import 'package:flutter_app/page/home_tab_page.dart';
 import 'package:flutter_app/page/service_page.dart';
 import 'package:flutter_app/widget/self_drawer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -25,6 +26,7 @@ class _TabNavigatorState extends State<TabNavigator>
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width:750 , height: 1334)..init(context);
     return Scaffold(
       body: PageView(
         controller: _controller,
