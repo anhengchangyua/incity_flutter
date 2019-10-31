@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names
-Widget CustomGridView({List data = const [1, 2, 3, 4, 5]}) {
+Widget CustomGridView({List data}) {
   if (data == null || data.length == 0) {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
@@ -18,7 +18,6 @@ Widget CustomGridView({List data = const [1, 2, 3, 4, 5]}) {
     );
   }
   return SingleChildScrollView(
-
     padding: new EdgeInsets.all(4),
     scrollDirection: Axis.horizontal,
     physics: BouncingScrollPhysics(),
@@ -33,17 +32,21 @@ Widget CustomGridView({List data = const [1, 2, 3, 4, 5]}) {
               },
               child: Container(
                 alignment: Alignment.center,
-                width: 75,
-                height: 75,
+                width: 70,
+                height: 90,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Icon(Icons.fiber_smart_record),
+                    Image.network(
+                      data[index].icon,
+                      width: 45.0,
+                      height: 45.0,
+                    ),
                     Text(
-                      '投票',
+                      data[index].moduleName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.black54, fontSize: 11.5),
+                      style: TextStyle(color: Colors.black54, fontSize: 12.5),
                     ),
                   ],
                 ),

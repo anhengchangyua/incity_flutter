@@ -54,8 +54,8 @@ class _HomeTabListState extends State<HomeTabList>
           slivers: <Widget>[
             SliverToBoxAdapter(
                 child: Container(
-              height: 140 + 16 * 2.0,
-              padding: EdgeInsets.all(16),
+              height: 130 + 16 * 2.0,
+              padding: EdgeInsets.all(12),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular((6)),
                 child: (datas == null || datas.length == 0)
@@ -90,7 +90,7 @@ class _HomeTabListState extends State<HomeTabList>
             //文章列表
             SliverPadding(
                 padding: EdgeInsets.only(
-                  top: 10,
+                  top: 8,
                 ),
                 sliver: HomeListItem()),
           ],

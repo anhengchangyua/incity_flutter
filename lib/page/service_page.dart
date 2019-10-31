@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/model/modules_model.dart';
 import 'package:flutter_app/model/sub_nav_model.dart';
+import 'package:flutter_app/widget/wrap_widget.dart';
 import 'package:flutter_app/widget/custom_grid_view.dart';
-import 'package:flutter_app/widget/grid_nav.dart';
-import 'package:flutter_app/widget/sub_nav.dart';
+
 
 class ServicePage extends StatefulWidget {
   @override
@@ -36,7 +37,7 @@ class _ServicePageState extends State<ServicePage>
   Widget build(BuildContext context) {
     List<Widget> _list = new List();
     _list.add(new _ServiceHeader(animation: animation));
-    _list.add(CustomGridView());
+    _list.add(CustomGridView(data: dataModule));
     _list.add(Container(
         margin: EdgeInsets.fromLTRB(6, 0, 6, 0),
         child: ClipRRect(
@@ -46,9 +47,15 @@ class _ServicePageState extends State<ServicePage>
             bottomLeft: Radius.circular(4),
             bottomRight: Radius.circular(4),
           ),
-          child: new Image.network(
-            'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190705/25_20190705023025_885_8862.jpg',
+          child: CachedNetworkImage(
+            imageUrl:
+                'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190705/25_20190705023025_885_8862.jpg',
             fit: BoxFit.cover,
+            placeholder: (context, url) {
+              return DecoratedBox(
+                decoration: BoxDecoration(color: Colors.grey[300]),
+              );
+            },
           ),
         )));
     _list.add(Container(
@@ -67,10 +74,9 @@ class _ServicePageState extends State<ServicePage>
       ),
       width: 90,
       height: 40,
-      padding: EdgeInsets.only(left: 24.0, right: 8.0),
+      padding: EdgeInsets.only(left: 15.0, right: 8.0),
     ));
-    _list.add(
-        new SubNav(subNavList: datas, color: Colors.white, sepratescale: 2));
+    _list.add(new WrapWidget(dataList: datas));
     _list.add(Container(
       child: Row(
         children: <Widget>[
@@ -86,15 +92,14 @@ class _ServicePageState extends State<ServicePage>
       ),
       width: 90,
       height: 40,
-      padding: EdgeInsets.only(left: 24.0, right: 8.0),
+      padding: EdgeInsets.only(left: 15.0, right: 8.0),
     ));
-    _list.add(new SubNav(
-        subNavList: dataPerson, color: Colors.white, sepratescale: 4));
+    _list.add(new WrapWidget(dataList: dataPerson));
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-          child:   ListView(
+          child: ListView(
         children: _list,
       )),
     );

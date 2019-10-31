@@ -43,7 +43,7 @@ class _ListItemState extends State<ListItem>
           ),
           // 分割线
           Container(
-            margin: EdgeInsets.fromLTRB(20.0, 2.0, 10.0, 2.0),
+            margin: EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
             color: Color(0xffeaeaea),
             constraints: BoxConstraints.expand(height: 2.0),
           )
@@ -91,11 +91,12 @@ class _listItem1 extends StatelessWidget {
             Container(
               height: 60,
               padding: EdgeInsets.only(top: 5),
-              margin: EdgeInsets.only(left: 10),
+              margin: EdgeInsets.only(left: 8),
               child: Text(
                 '继山东编导艺考联考被曝疑似出现泄题和作弊的情况。江西编导艺考联考也被曝疑似出现泄题和作弊的情况。',
                 style: TextStyle(
-                    fontSize: 15.5,
+                    letterSpacing: 0.5,
+                    fontSize: 16.0,
                     color: Color(0xff111111),
                     fontFamily: 'FZBIAOYSJW'),
                 maxLines: 2,
@@ -108,8 +109,14 @@ class _listItem1 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text('2019-08-22'),
+                    margin: EdgeInsets.only(left: 8),
+                    child: Text(
+                      '2019-08-22',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black54,
+                        ),
+                    ),
                   ),
                   Container(
                     width: 40.0,
@@ -136,7 +143,7 @@ class _listItem1 extends StatelessWidget {
           ],
         )),
         SizedBox(
-          width: 15.0,
+          width: 17.0,
         ),
         Container(
           height: 85.0,

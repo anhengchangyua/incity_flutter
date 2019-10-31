@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/widget/custom_sliver_app_bar_delegate.dart';
 import 'package:flutter_app/widget/home_tab_list.dart';
 import 'package:flutter_app/widget/self_drawer.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class HomeTabPage extends StatefulWidget {
@@ -159,7 +158,7 @@ class _HomeTabPageState extends State<HomeTabPage>
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "FZBIAOYSJW",
-                      fontSize: ScreenUtil(allowFontScaling: true).setSp(38),),
+                      fontSize: 18,),
                 )),
           ),
           GestureDetector(
