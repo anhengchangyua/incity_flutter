@@ -19,16 +19,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # add flutter_ScreenUtil
-  flutter_screenutil: ^0.5.3
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  provider: ^3.1.0 #数据管理层
   cupertino_icons: ^0.1.2
   flutter_webview_plugin: ^0.3.5
   flutter_swiper: ^1.1.6
   http: ^0.12.0+2
-  cached_network_image: ^1.0.0
+  cached_network_image: ^1.0.0 #图片加载
+  oktoast: ^2.1.7 #ui
+  pull_to_refresh: ^1.5.6 #ui
+  #侧滑菜单
+  flutter_slidable: 0.5.3
+  #闪亮
+  shimmer: ^1.0.0
+  #网络库
+  dio: ^3.0.1
+  dio_cookie_manager: ^1.0.0
+  cookie_jar: ^1.0.0
+  #存储
+  shared_preferences: ^0.5.3+5
+  #本地json对象存储
+  localstorage: ^2.0.0
+  #设备信息
+  device_info: ^0.4.0+1
+  #包信息
+  package_info: ^0.4.0+6
 
 
 dev_dependencies:
@@ -47,14 +61,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-    # To add assets to your application, add an assets section, like this:
+  # To add assets to your application, add an assets section, like this:
   assets:
-     - images/drawer_bg.jpeg
-     - images/rocket.png
+    - images/drawer_bg.jpeg
+    - images/rocket.png
   fonts:
-     - family: FZBIAOYSJW
-       fonts:
-         - asset: fonts/FZBIAOYSJW.TTF
+    - family: FZBIAOYSJW
+      fonts:
+        - asset: fonts/FZBIAOYSJW.TTF
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
