@@ -113,7 +113,6 @@ class ThemeModel with ChangeNotifier {
         labelStyle: themeData.textTheme.caption,
         backgroundColor: themeData.chipTheme.backgroundColor.withOpacity(0.1),
       ),
-//          textTheme: CupertinoTextThemeData(brightness: Brightness.light)
       inputDecorationTheme: ThemeHelper.inputDecorationTheme(themeData),
     );
     return themeData;

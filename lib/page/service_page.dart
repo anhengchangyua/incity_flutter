@@ -5,7 +5,6 @@ import 'package:flutter_app/model/sub_nav_model.dart';
 import 'package:flutter_app/widget/wrap_widget.dart';
 import 'package:flutter_app/widget/custom_grid_view.dart';
 
-
 class ServicePage extends StatefulWidget {
   @override
   _ServicePageState createState() => _ServicePageState();
@@ -97,12 +96,14 @@ class _ServicePageState extends State<ServicePage>
     _list.add(new WrapWidget(dataList: dataPerson));
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
+        backgroundColor: Colors.white,
+        body: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
           child: ListView(
-        children: _list,
-      )),
-    );
+            children: _list,
+          ),
+        ));
   }
 
   @override

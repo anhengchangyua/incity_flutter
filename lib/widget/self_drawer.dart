@@ -7,12 +7,11 @@ class SelfDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Drawer(
+    return  Drawer(
       child: MediaQuery.removePadding(
         context: context,
         //移除抽屉菜单顶部默认留白
-        removeTop: true,
+        removeTop: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -60,6 +59,6 @@ class SelfDrawer extends StatelessWidget {
           ],
         ),
       ),
-    ));
+    );
   }
 }

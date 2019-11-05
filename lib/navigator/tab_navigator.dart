@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/page/my_page.dart';
 import 'package:flutter_app/page/travel_page.dart';
-import 'package:flutter_app/page/home_tab_page.dart';
+import 'package:flutter_app/page/home_page.dart';
 import 'package:flutter_app/page/service_page.dart';
+import 'package:flutter_app/widget/self_drawer.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -30,6 +31,7 @@ class _TabNavigatorState extends State<TabNavigator>
         children: <Widget>[HomeTabPage(), ServicePage(), TravelPage(), MyPage()],
         physics: NeverScrollableScrollPhysics(), //取消滑动
       ),
+      drawer: new SelfDrawer(), //抽屉
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,

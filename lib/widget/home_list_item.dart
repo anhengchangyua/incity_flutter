@@ -113,28 +113,28 @@ class _listItem1 extends StatelessWidget {
                     child: Text(
                       '2019-08-22',
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black54,
-                        ),
+                        fontSize: 14.0,
+                        color: Colors.black54,
+                      ),
                     ),
                   ),
                   Container(
-                    width: 40.0,
+                    width: 30.0,
                     height: 20.0,
-                    child: ButtonTheme(
-                      buttonColor: Color.fromARGB(255, 103, 114, 202),
-                      shape: StadiumBorder(),
-                      child: RaisedButton(
-                        onPressed: () => print('test'),
-                        padding: EdgeInsets.all(2.0),
-                        child: Text(
-                          '置顶',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 11.0,
-                              fontWeight: FontWeight.w300),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.deepOrangeAccent,
+                          width: 1.0,
+                          style: BorderStyle.solid,
                         ),
-                      ),
+                        borderRadius: BorderRadius.circular(4.0)),
+                    child: Text(
+                      '置顶',
+                      style: TextStyle(
+                          color: Colors.deepOrangeAccent,
+                          fontSize: 11.0,
+                          fontWeight: FontWeight.w300),
                     ),
                   ),
                 ],
