@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -32,24 +36,35 @@ class _ListItemState extends State<ListItem>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100.0,
-      child: Column(
-        children: <Widget>[
-          // 内容视图
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-            child: _covertListItem(0),
+    var backgroundColor = Theme.of(context).scaffoldBackgroundColor;
+    return Material(
+        color: backgroundColor,
+        child: Ink(
+          child: InkWell(
+            onTap: () {
+              print('aaaaa');
+            },
+            child: Container(
+              height: 100.0,
+              child: Column(
+                children: <Widget>[
+                  // 内容视图
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+                    child: _covertListItem(0),
+                  ),
+                  // 分割线
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                    color: Color(0xffeaeaea),
+                    constraints: BoxConstraints.expand(height: 2.0),
+                  )
+                ],
+              ),
+            ),
           ),
-          // 分割线
-          Container(
-            margin: EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
-            color: Color(0xffeaeaea),
-            constraints: BoxConstraints.expand(height: 2.0),
-          )
-        ],
-      ),
-    );
+        ));
   }
 
   @override
@@ -149,14 +164,16 @@ class _listItem1 extends StatelessWidget {
           height: 85.0,
           width: 115.0,
           margin: EdgeInsets.only(top: 2.0),
-          decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(5.0),
-            image: DecorationImage(
-              image: new NetworkImage(
-                  'https://resources.ninghao.org/images/candy-shop.jpg'),
-              fit: BoxFit.cover,
-            ),
+          child: CachedNetworkImage(
+            imageUrl:
+            'https://resources.ninghao.org/images/candy-shop.jpg',
+            fit: BoxFit.cover,
+            placeholder: (context, url) {
+              return SizedBox(
+                  width: 115,
+                  height: 85,
+                  child: CupertinoActivityIndicator(radius: min(10.0, 115 / 3)));
+            },
           ),
         ),
       ],

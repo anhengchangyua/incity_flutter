@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/banner_model.dart';
+import 'package:flutter_app/widget/article_skeleton.dart';
+import 'package:flutter_app/widget/skeleton_widget.dart';
 import 'home_list_item.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../model/banner_model.dart';
@@ -40,14 +42,23 @@ class _HomeTabListState extends State<HomeTabList>
 
   @override
   Widget build(BuildContext context) {
+//    if (true) {
+//      return SkeletonList(
+//        builder: (context, index) => ArticleSkeletonItem(),
+//      );
+//    }
     return NotificationListener(
       // ignore: missing_return
-      onNotification: (notification) {},
+      onNotification: (notification) {
+      },
+
       child: RefreshIndicator(
+
         onRefresh: () async {
           //app有自己的加载框样式，不使用RefreshIndicator拉出来的圆球作为加载框。所以onRefresh立即返回，让圆球立即消失
           return;
         },
+
         child: CustomScrollView(
           physics:
               AlwaysScrollableScrollPhysics(parent: ClampingScrollPhysics()),

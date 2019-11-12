@@ -1,23 +1,47 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/modules_model.dart';
 import 'package:flutter_app/model/sub_nav_model.dart';
 import 'package:flutter_app/widget/wrap_widget.dart';
 import 'package:flutter_app/widget/custom_grid_view.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ServicePage extends StatefulWidget {
   @override
-  _ServicePageState createState() => _ServicePageState();
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _ServicePageState();
+  }
 }
 
 class _ServicePageState extends State<ServicePage>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
+  RefreshController _refreshController1 =
+      RefreshController(initialRefresh: false);
+
+  void _onRefresh() async {
+    // monitor network fetch
+    print('123123');
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    _refreshController1.refreshCompleted();
+  }
+
+  void _onLoading() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+
+    _refreshController1.loadComplete();
+  }
 
   @override
   void initState() {
-    super.initState();
     controller = new AnimationController(
         duration: const Duration(milliseconds: 1500), vsync: this);
     animation = new CurvedAnimation(parent: controller, curve: Curves.easeIn)
@@ -30,6 +54,7 @@ class _ServicePageState extends State<ServicePage>
       });
 
     controller.forward();
+    super.initState();
   }
 
   @override
@@ -51,9 +76,11 @@ class _ServicePageState extends State<ServicePage>
                 'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190705/25_20190705023025_885_8862.jpg',
             fit: BoxFit.cover,
             placeholder: (context, url) {
-              return DecoratedBox(
-                decoration: BoxDecoration(color: Colors.grey[300]),
-              );
+              return SizedBox(
+                  width: 115,
+                  height: 85,
+                  child:
+                      CupertinoActivityIndicator(radius: min(10.0, 115 / 3)));
             },
           ),
         )));
@@ -95,14 +122,25 @@ class _ServicePageState extends State<ServicePage>
     ));
     _list.add(new WrapWidget(dataList: dataPerson));
 
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: MediaQuery.removePadding(
+    return RefreshConfiguration(
+        enableScrollWhenTwoLevel: false,
+        maxOverScrollExtent: 120,
+        child: MediaQuery.removePadding(
           context: context,
           removeTop: true,
-          child: ListView(
-            children: _list,
-          ),
+          child: Scaffold(
+              backgroundColor: Colors.white,
+              body: SmartRefresher(
+                enablePullDown: true,
+                enablePullUp: true,
+                header: ClassicHeader(),
+                controller: _refreshController1,
+                onRefresh: _onRefresh,
+                onLoading: _onLoading,
+                child: ListView(
+                  children: _list,
+                ),
+              )),
         ));
   }
 
@@ -140,9 +178,11 @@ class _ServiceHeader extends AnimatedWidget {
                       'http://zdg.rzdgrm.cn:9090/upload_pics/main_start/img20190710/25_20190710111744_473_7193.jpg',
                   fit: BoxFit.cover,
                   placeholder: (context, url) {
-                    return DecoratedBox(
-                      decoration: BoxDecoration(color: Colors.grey[300]),
-                    );
+                    return SizedBox(
+                        width: 200,
+                        height: 165,
+                        child: CupertinoActivityIndicator(
+                            radius: min(10.0, 115 / 3)));
                   },
                 ),
               ),
