@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_app/model/modules_model.dart';
 import 'package:flutter_app/model/sub_nav_model.dart';
 import 'package:flutter_app/widget/wrap_widget.dart';
 import 'package:flutter_app/widget/custom_grid_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ServicePage extends StatefulWidget {
@@ -153,7 +155,7 @@ class _ServicePageState extends State<ServicePage>
 
 class _ServiceHeader extends AnimatedWidget {
   static final _opacityTween = new Tween<double>(begin: 0.8, end: 1.0);
-  static final _sizeTween = new Tween<double>(begin: 340.0, end: 400.0);
+  static final _sizeTween = new Tween<double>(begin:ScreenUtil().setWidth(540), end:window.physicalSize.width);
 
   _ServiceHeader({Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
@@ -166,7 +168,7 @@ class _ServiceHeader extends AnimatedWidget {
           child: new Opacity(
             opacity: _opacityTween.evaluate(animation),
             child: new Container(
-              height: 165,
+              height: ScreenUtil().setHeight(365),
               width: _sizeTween.evaluate(animation),
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
@@ -179,8 +181,6 @@ class _ServiceHeader extends AnimatedWidget {
                   fit: BoxFit.cover,
                   placeholder: (context, url) {
                     return SizedBox(
-                        width: 200,
-                        height: 165,
                         child: CupertinoActivityIndicator(
                             radius: min(10.0, 115 / 3)));
                   },
@@ -191,14 +191,14 @@ class _ServiceHeader extends AnimatedWidget {
         ),
         Positioned(
             left: 40,
-            top: 40,
+            top: 60,
             child: Text(
               '日照东港',
               style: TextStyle(color: Colors.white, fontSize: 24),
             )),
         Positioned(
             left: 60,
-            top: 90,
+            top: 110,
             child: Text(
               '32℃',
               style: TextStyle(color: Colors.white, fontSize: 24),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: non_constant_identifier_names
 Widget CustomGridView({List data}) {
   if (data == null || data.length == 0) {
@@ -32,21 +32,21 @@ Widget CustomGridView({List data}) {
               },
               child: Container(
                 alignment: Alignment.center,
-                width: 70,
-                height: 90,
+                width: ScreenUtil().setWidth(140),
+                height:  ScreenUtil().setHeight(170),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Image.network(
                       data[index].icon,
-                      width: 45.0,
-                      height: 45.0,
+                      width:ScreenUtil().setWidth(80),
+                      height: ScreenUtil().setWidth(80),
                     ),
                     Text(
                       data[index].moduleName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.black54, fontSize: 12.5),
+                      style: TextStyle(color: Colors.black54, fontSize: ScreenUtil().setSp(30)),
                     ),
                   ],
                 ),

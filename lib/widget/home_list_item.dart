@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: non_constant_identifier_names
 Widget HomeListItem() {
@@ -22,16 +23,12 @@ class ListItem extends StatefulWidget {
 class _ListItemState extends State<ListItem>
     with SingleTickerProviderStateMixin {
   AnimationController _collectController;
-  Animation _collectAnim;
 
   @override
   void initState() {
     super.initState();
     _collectController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    CurvedAnimation curvedAnimation =
-        CurvedAnimation(parent: _collectController, curve: Curves.easeOut);
-    _collectAnim = Tween<double>(begin: 1, end: 1.8).animate(curvedAnimation);
   }
 
   @override
@@ -45,7 +42,6 @@ class _ListItemState extends State<ListItem>
               print('aaaaa');
             },
             child: Container(
-              height: 100.0,
               child: Column(
                 children: <Widget>[
                   // 内容视图
@@ -58,7 +54,7 @@ class _ListItemState extends State<ListItem>
                   Container(
                     margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                     color: Color(0xffeaeaea),
-                    constraints: BoxConstraints.expand(height: 2.0),
+                    constraints: BoxConstraints.expand(height: ScreenUtil().setWidth(2)),
                   )
                 ],
               ),
@@ -104,14 +100,13 @@ class _listItem1 extends StatelessWidget {
           textBaseline: TextBaseline.alphabetic,
           children: <Widget>[
             Container(
-              height: 60,
-              padding: EdgeInsets.only(top: 5),
-              margin: EdgeInsets.only(left: 8),
+              padding: EdgeInsets.only(top: ScreenUtil().setWidth(5)),
+              margin: EdgeInsets.only(left: ScreenUtil().setWidth(8)),
               child: Text(
                 '继山东编导艺考联考被曝疑似出现泄题和作弊的情况。江西编导艺考联考也被曝疑似出现泄题和作弊的情况。',
                 style: TextStyle(
                     letterSpacing: 0.5,
-                    fontSize: 16.0,
+                    fontSize:ScreenUtil().setSp(28),
                     color: Color(0xff111111),
                     fontFamily: 'FZBIAOYSJW'),
                 maxLines: 2,
@@ -119,7 +114,7 @@ class _listItem1 extends StatelessWidget {
               ),
             ),
             Container(
-              height: 30,
+                      margin: EdgeInsets.only(top: ScreenUtil().setWidth(40)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -128,15 +123,14 @@ class _listItem1 extends StatelessWidget {
                     child: Text(
                       '2019-08-22',
                       style: TextStyle(
-                        fontSize: 14.0,
+                        fontSize: ScreenUtil().setSp(24),
                         color: Colors.black54,
                       ),
                     ),
                   ),
                   Container(
-                    width: 30.0,
-                    height: 20.0,
                     alignment: Alignment.center,
+              padding: EdgeInsets.fromLTRB(3, 0, 3, 0),
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.deepOrangeAccent,
@@ -148,7 +142,7 @@ class _listItem1 extends StatelessWidget {
                       '置顶',
                       style: TextStyle(
                           color: Colors.deepOrangeAccent,
-                          fontSize: 11.0,
+                         fontSize: ScreenUtil().setSp(20),
                           fontWeight: FontWeight.w300),
                     ),
                   ),
@@ -158,20 +152,18 @@ class _listItem1 extends StatelessWidget {
           ],
         )),
         SizedBox(
-          width: 17.0,
+          width: ScreenUtil().setWidth(35) ,
         ),
         Container(
-          height: 85.0,
-          width: 115.0,
-          margin: EdgeInsets.only(top: 2.0),
+          width:  ScreenUtil().setWidth(200),
+          margin: EdgeInsets.only(top:ScreenUtil().setWidth(4)),
           child: CachedNetworkImage(
             imageUrl:
             'https://resources.ninghao.org/images/candy-shop.jpg',
             fit: BoxFit.cover,
             placeholder: (context, url) {
               return SizedBox(
-                  width: 115,
-                  height: 85,
+                  width:  ScreenUtil().setWidth(150),
                   child: CupertinoActivityIndicator(radius: min(10.0, 115 / 3)));
             },
           ),

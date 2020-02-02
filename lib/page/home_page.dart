@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widget/custom_sliver_app_bar_delegate.dart';
 import 'package:flutter_app/widget/home_tab_list.dart';
-import 'package:flutter_app/widget/self_drawer.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeTabPage extends StatefulWidget {
   @override
@@ -29,7 +28,7 @@ class _HomeTabPageState extends State<HomeTabPage>
 
   @override
   Widget build(BuildContext context) {
-
+    ScreenUtil.init(context, width: 720, height:1280 , allowFontScaling: false);
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -57,10 +56,9 @@ class _HomeTabPageState extends State<HomeTabPage>
                             pinned: true,
                             floating: true,
                             delegate: CustomSliverAppBarDelegate(
-                              minHeight: 40,
-                              maxHeight: 40,
+                              minHeight: ScreenUtil().setHeight(70),
+                              maxHeight: ScreenUtil().setHeight(70),
                               child: Container(
-                                height: 40,
                                 decoration: _themeGradientDecoration(),
                                 child: appBarTab(_tabController),
                               ),
@@ -123,9 +121,8 @@ class _HomeTabPageState extends State<HomeTabPage>
 
   ///头部标题栏
   Widget appBarHeader() {
-
     return Container(
-      height: 60,
+      height:ScreenUtil().setHeight(60),
       alignment: Alignment.centerLeft,
       child: Row(
         children: <Widget>[
@@ -134,8 +131,7 @@ class _HomeTabPageState extends State<HomeTabPage>
               Scaffold.of(innerContext).openDrawer();
             },
             child: Container(
-              width: 34,
-              height: 34,
+              width: ScreenUtil().setWidth(64),
               alignment: Alignment.center,
               margin: EdgeInsets.symmetric(horizontal: 12),
               child: ClipRRect(
@@ -157,7 +153,7 @@ class _HomeTabPageState extends State<HomeTabPage>
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "FZBIAOYSJW",
-                      fontSize: 18,),
+                      fontSize: ScreenUtil().setSp(35),),
                 )),
           ),
           GestureDetector(

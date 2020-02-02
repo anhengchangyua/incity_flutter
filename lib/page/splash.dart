@@ -28,15 +28,15 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
       body: Stack(fit: StackFit.expand, children: <Widget>[
         Image.network(
           'http://zdg.rzdgrm.cn:9090/upload_pics/main/img20190705/25_20190705045901_934_5349.png',
         ),
         Align(
           alignment: Alignment.bottomRight,
-          child: SafeArea(
-            child: InkWell(
+          child:   InkWell(
               onTap: () {
                 nextPage(context);
               },
@@ -54,9 +54,9 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
                 ),
               ),
             ),
-          ),
         )
       ]),
+    ),
     );
   }
 }

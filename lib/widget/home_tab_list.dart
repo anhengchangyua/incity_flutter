@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/model/banner_model.dart';
 import 'package:flutter_app/widget/article_skeleton.dart';
 import 'package:flutter_app/widget/skeleton_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home_list_item.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../model/banner_model.dart';
@@ -65,7 +66,7 @@ class _HomeTabListState extends State<HomeTabList>
           slivers: <Widget>[
             SliverToBoxAdapter(
                 child: Container(
-              height: 130 + 16 * 2.0,
+              height: ScreenUtil().setHeight(320),
               padding: EdgeInsets.all(12),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular((6)),
@@ -101,7 +102,7 @@ class _HomeTabListState extends State<HomeTabList>
             //文章列表
             SliverPadding(
                 padding: EdgeInsets.only(
-                  top: 8,
+                  top: ScreenUtil().setHeight(8),
                 ),
                 sliver: HomeListItem()),
           ],
